@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
 const prefixMap = require('inline-style-prefixer/lib/data').default.prefixMap;
 const mdnProperties = require('mdn-data/css/properties.json');
 

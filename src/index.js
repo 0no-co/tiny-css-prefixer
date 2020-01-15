@@ -1,16 +1,13 @@
 import /* codegen */ '../scripts/generate-prefix-map';
 
-export const prefixProperty = prop => {
-  const props = [prop];
-  if (msPrefixRe.test(prop)) {
-    props.push(`-ms-${prop}`);
-  } else if (mozPrefixRe.test(prop)) {
-    props.push(`-moz-${prop}`);
-  } else if (webkitPrefixRe.test(prop)) {
-    props.push(`-webkit-${prop}`);
-  }
+const ms = 0b001;
+const moz = 0b010;
+const webkit = 0b100;
 
-  return props;
+export const prefixProperty = prop => {
+  return (msPrefixRe.test(prop) ? ms : 0)
+    | (mozPrefixRe.test(prop) ? moz : 0)
+    | (webkitPrefixRe.test(prop) ? webkit : 0)
 };
 
 export const prefixValue = (prop, value) => {
