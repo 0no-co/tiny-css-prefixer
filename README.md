@@ -26,7 +26,7 @@ applied:
 - `0b100` stands for `-webkit`
 
 These are combined using a binary OR, so an example usage of the
-`pefixProperty` helper may look like the following:
+`prefixProperty` helper may look like the following:
 
 ```js
 const prefix = (prop, value) => {
