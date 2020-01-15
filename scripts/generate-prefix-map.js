@@ -63,6 +63,10 @@ properties.push(...[
   'border-end-color',
   'border-end-style',
   'border-end-width',
+  'border-start-start-radius',
+  'border-start-end-radius',
+  'border-end-start-radius',
+  'border-end-end-radius',
 ].map(name => ({ name, ms: false, moz: true, webkit: true })));
 
 /** A list of stable, non-prefixable property names */
