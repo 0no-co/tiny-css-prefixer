@@ -1,7 +1,7 @@
 {
   "name": "tiny-css-prefixer",
   "description": "CSS prefixing helpers in less than 1KB",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "dist/tiny-css-prefixer.js",
   "module": "dist/tiny-css-prefixer.es.js",
   "source": "src/index.js",
