@@ -7,9 +7,9 @@ const cache = {};
 
 export const prefixProperty = prop => {
   if (cache[prop]) return cache[prop];
-  return (cache[prop] = (msPrefixRe.test(prop) ? ms : 0)
-    | (mozPrefixRe.test(prop) ? moz : 0)
-    | (webkitPrefixRe.test(prop) ? webkit : 0));
+  return (cache[prop] = (ms * msPrefixRe.test(prop))
+    | (moz * mozPrefixRe.test(prop))
+    | (webkit * webkitPrefixRe.test(prop)));
 };
 
 export const prefixValue = (prop, value) => {
