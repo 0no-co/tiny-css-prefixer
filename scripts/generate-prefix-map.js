@@ -106,7 +106,10 @@ const reducePrefixes = (filter = x => !!x) => {
     return acc;
   }, new Set());
 
-  return [...set].sort();
+  return [...set].sort((a, b) => {
+    if (a.length === b.length) return a.localeCompare(b);
+    return a.length - b.length;
+  });
 };
 
 const buildRegex = groups =>  `^(${groups.join('|')})`;
