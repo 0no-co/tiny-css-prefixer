@@ -3,6 +3,8 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import buble from '@rollup/plugin-buble';
 import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
+import filesize from 'rollup-plugin-filesize';
+
 
 const terserMinified = terser({
   sourcemap: false,
@@ -70,6 +72,9 @@ export default {
       esModule: false,
       file: `./dist/tiny-css-prefixer.es.js`,
       format: 'esm',
+      plugins: [
+        filesize()
+      ]
     },
   ],
 };
