@@ -38,3 +38,12 @@ const prefix = (prop, value) => {
   return css;
 };
 ```
+
+Additionally `prefixValue` can accept full declarations to avoid
+having to apply it before concatenation, which can be useful in case
+you're trying to minimise string operations:
+
+```js
+const declaration = 'position: sticky';
+prefixValue(declaration, declaration); // 'position: -webkit-sticky, sticky'
+```
