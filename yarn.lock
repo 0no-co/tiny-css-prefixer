@@ -262,7 +262,7 @@ ansi-styles@^4.1.0:
     "@types/color-name" "^1.1.1"
     color-convert "^2.0.1"
 
-babel-plugin-codegen@^3.0.0, babel-plugin-codegen@^3.1.0:
+babel-plugin-codegen@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-codegen/-/babel-plugin-codegen-3.1.0.tgz#a5eeccd269f868d9173a32b9b3ceb052f307a826"
   integrity sha512-etFLWBRmsCY6aT44GW6SXAv7NfjXAbNB6XNbH+ZiX5B00yYL4TSPZlETaZ5dZ5kYO2wpSc72z9HeK99BX7uERw==
@@ -369,13 +369,6 @@ cli-boxes@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-2.2.0.tgz#538ecae8f9c6ca508e3c3c95b453fe93cb4c168d"
   integrity sha512-gpaBrMAizVEANOpfZp/EEUixTXDyGt7DFzdK5hU+UbWt/J0lB0w20ncZj59Z9a93xHb9u12zF5BS6i9RKbtg4w==
-
-codegen.macro@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/codegen.macro/-/codegen.macro-3.0.0.tgz#5998646d53d3cfd832204cd6b20f58c245f60a80"
-  integrity sha512-gDDnd8JmoQTms9ctoe7Olcr8KuIOnU85e7wieNMC14H4at3abNokxbqwRjKS0na5omOGQez3wdaFalbe0Z2tTA==
-  dependencies:
-    babel-plugin-codegen "^3.0.0"
 
 color-convert@^1.9.0:
   version "1.9.3"
