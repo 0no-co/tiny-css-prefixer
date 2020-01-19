@@ -83,21 +83,27 @@ const stablePropertyNames = Object.keys(mdnProperties)
     !properties.some(({ name }) => name === x)
   ));
 
-/** Lists each prefixed property with the minimum substring that is needed to uniquely identity it */
-const prefixPatterns = properties
-  .map(prop => {
-    let name = prop.name;
-    for (let i = 2, l = name.length; i < l; i++) {
-      const substr = name.slice(0, i);
-      // Check for any name that conflicts with the substring in all known CSS properties
-      if (stablePropertyNames.every(x => x === name || !x.startsWith(substr))) {
-        name = substr;
-        break;
-      }
+/** Finds the minimum starting substring that uniquely identifier a property out of all known CSS properties */
+const findMinimumSubstr = name => {
+  for (let i = 2, l = name.length; i < l; i++) {
+    const substr = name.slice(0, i);
+    // Check for any name that conflicts with the substring in all known CSS properties
+    if (stablePropertyNames.every(x => x === name || !x.startsWith(substr))) {
+      return substr;
     }
+  }
 
-    return { ...prop, name };
-  });
+  return name;
+};
+
+/** Lists each prefixed property with the minimum substring that is needed to uniquely identity it */
+const prefixPatterns = properties.map(prop => ({
+  ...prop,
+  name: findMinimumSubstr(prop.name)
+}));
+
+/** For Webkit prefixes, these properties will need some values to be prefixed */
+const prefixValuePatterns = ['position', 'background-clip'].map(findMinimumSubstr);
 
 /** Accepts a filter and builds a list of names in `prefixPatterns` */
 const reducePrefixes = (filter = x => !!x) => {
@@ -112,6 +118,7 @@ const reducePrefixes = (filter = x => !!x) => {
   });
 };
 
+/** Creates a regex matching property names */
 const buildRegex = groups =>  `^(${groups.join('|')})`;
 
 // Create all prefix sets for each prefix
@@ -119,8 +126,12 @@ const msPrefixes = buildRegex(reducePrefixes(x => x.ms));
 const mozPrefixes = buildRegex(reducePrefixes(x => x.moz));
 const webkitPrefixes = buildRegex(reducePrefixes(x => x.webkit));
 
+// Create a regex for webkit value transforms
+const webkitValuePrefix = buildRegex(prefixValuePatterns);
+
 module.exports = `
 var msPrefixRe = /${msPrefixes}/;
 var mozPrefixRe = /${mozPrefixes}/;
 var webkitPrefixRe = /${webkitPrefixes}/;
+var webkitValuePrefixRe = /${webkitValuePrefix}/;
 `.trim();

@@ -13,11 +13,8 @@ export const prefixProperty = prop => {
 };
 
 export const prefixValue = (prop, value) => {
-  if (
-    (prop === 'position' && value === 'sticky') ||
-    (prop === 'background-clip' && value === 'text')
-  ) {
-    return `-webkit-${value}, ${value}`;
+  if (webkitValuePrefixRe.test(prop)) {
+    return value.replace(/(sticky|text)/, '-webkit-$1, $1');
   }
 
   return value;
