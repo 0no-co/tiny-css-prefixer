@@ -49,10 +49,6 @@ properties.push({
 // NOTE: Their variants with before/after are not supported
 // by Firefox and should be avoided
 properties.push(...[
-  'margin-start',
-  'margin-end',
-  'padding-start',
-  'padding-end',
   'border-start',
   'border-start-color',
   'border-start-style',
